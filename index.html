@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI実践シリーズ｜特典ダウンロードページ</title>
+<meta name="description" content="3大AI特化 プロンプト構成大全（全60ページ）と、CTR最大化ヘッダー設計プロンプト。LINE友だち限定の特典をこちらからどうぞ。">
+<style>
+  :root{
+    --ink:#0c0e13;
+    --ink2:#14171e;
+    --paper:#f7f8fb;
+    --line:#e3e7ef;
+    --sub:#5a6478;
+    --lime:#a8e000;
+    --lime-bright:#c8f53a;
+    --violet:#6d5cff;
+    --gemini:#1a73e8;
+    --gpt:#10a37f;
+    --claude:#d97757;
+    --pink:#e6005a;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP','Yu Gothic',sans-serif;
+    color:#15181f; background:var(--paper); line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 20px; }
+
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(160deg,#14171e 0%,#0c0e13 60%,#070809 100%);
+    color:#fff; position:relative; overflow:hidden;
+    padding:64px 0 72px;
+  }
+  .hero::before{
+    content:""; position:absolute; width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle,rgba(124,108,255,0.35),transparent 70%);
+    top:-120px; right:-100px;
+  }
+  .hero::after{
+    content:""; position:absolute; width:360px; height:360px; border-radius:50%;
+    background:radial-gradient(circle,rgba(168,224,0,0.18),transparent 70%);
+    bottom:-140px; left:-120px;
+  }
+  .hero-inner{ position:relative; z-index:2; }
+  .eyebrow{
+    display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.2em;
+    color:var(--lime-bright); border:1px solid rgba(200,245,58,0.4);
+    padding:6px 16px; border-radius:30px; margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(28px,5vw,46px); font-weight:900; line-height:1.3; letter-spacing:0.01em;
+    margin-bottom:16px;
+  }
+  .hero h1 .hl{ color:var(--lime-bright); }
+  .hero p.lead{
+    font-size:clamp(14px,2.3vw,17px); color:#cfd4e0; font-weight:400; max-width:680px;
+  }
+  .hero-meta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
+  .hero-meta .chip{
+    background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14);
+    border-radius:10px; padding:10px 16px; font-size:13px;
+  }
+  .hero-meta .chip b{ color:var(--lime-bright); font-size:18px; margin-right:4px; }
+
+  /* ===== Section ===== */
+  .section{ padding:56px 0; }
+  .section-head{ text-align:center; margin-bottom:40px; }
+  .section-head .label{ font-size:12px; font-weight:700; letter-spacing:0.2em; color:var(--violet); }
+  .section-head h2{ font-size:clamp(22px,4vw,30px); font-weight:900; margin-top:8px; }
+  .section-head p{ font-size:14px; color:var(--sub); margin-top:8px; }
+
+  /* ===== 特典カード ===== */
+  .gift-grid{ display:grid; grid-template-columns:1fr; gap:28px; }
+  @media(min-width:760px){ .gift-grid{ grid-template-columns:1fr 1fr; } }
+  .gift-card{
+    background:#fff; border:1px solid var(--line); border-radius:20px; overflow:hidden;
+    display:flex; flex-direction:column;
+    box-shadow:0 8px 30px rgba(20,23,30,0.06); transition:transform .2s, box-shadow .2s;
+  }
+  .gift-card:hover{ transform:translateY(-4px); box-shadow:0 16px 44px rgba(20,23,30,0.12); }
+  .gift-cover{
+    height:230px; position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .gift-cover.dark{ background:linear-gradient(155deg,#14171e,#0a0c10); }
+  .gift-cover.violet{ background:linear-gradient(150deg,#241b4d,#3a1d4d); }
+  .gift-cover .badge{
+    position:absolute; top:14px; left:14px; background:var(--pink); color:#fff;
+    font-size:11px; font-weight:700; padding:5px 12px; border-radius:20px; letter-spacing:0.05em;
+  }
+  .gift-cover .cv-title{ color:#fff; text-align:center; padding:0 20px; }
+  .gift-cover .cv-title .big{ font-size:30px; font-weight:900; line-height:1.25; }
+  .gift-cover .cv-title .big .lime{ color:var(--lime-bright); }
+  .gift-cover .cv-title .sub{ font-size:13px; color:#cfd4e0; margin-top:8px; }
+  .gift-cover img{ width:100%; height:100%; object-fit:cover; object-position:top; }
+
+  .gift-body{ padding:22px 22px 24px; flex:1; display:flex; flex-direction:column; }
+  .gift-tag{ font-size:11px; font-weight:700; color:var(--violet); letter-spacing:0.08em; }
+  .gift-body h3{ font-size:19px; font-weight:900; margin:6px 0 10px; line-height:1.4; }
+  .gift-body .desc{ font-size:13.5px; color:var(--sub); flex:1; }
+  .gift-features{ list-style:none; margin:14px 0 18px; }
+  .gift-features li{ font-size:13px; padding:4px 0 4px 22px; position:relative; }
+  .gift-features li::before{ content:"✓"; position:absolute; left:0; color:var(--gpt); font-weight:900; }
+  .btn-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:7px; justify-content:center;
+    font-size:14px; font-weight:700; padding:12px 18px; border-radius:10px; cursor:pointer;
+    border:none; transition:opacity .2s, transform .1s; flex:1; min-width:130px;
+  }
+  .btn:active{ transform:scale(0.98); }
+  .btn-primary{ background:var(--ink); color:#fff; }
+  .btn-primary:hover{ opacity:0.88; }
+  .btn-lime{ background:var(--lime); color:var(--ink); }
+  .btn-lime:hover{ opacity:0.88; }
+  .btn-ghost{ background:#f0f2f7; color:#15181f; }
+  .btn-ghost:hover{ background:#e6e9f0; }
+
+  /* ===== CTRプロンプト表示 ===== */
+  .prompt-card{
+    background:#fff; border:1px solid var(--line); border-radius:20px; overflow:hidden;
+    box-shadow:0 8px 30px rgba(20,23,30,0.06);
+  }
+  .prompt-head{
+    background:linear-gradient(135deg,#14171e,#241b4d); color:#fff; padding:22px 26px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+  }
+  .prompt-head h3{ font-size:19px; font-weight:900; }
+  .prompt-head p{ font-size:12.5px; color:#cfd4e0; margin-top:4px; }
+  .copy-btn{
+    background:var(--lime); color:var(--ink); border:none; border-radius:9px;
+    padding:10px 18px; font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap;
+  }
+  .copy-btn:active{ transform:scale(0.97); }
+  .copy-btn.done{ background:var(--gpt); color:#fff; }
+  .prompt-body{ padding:0; }
+  pre.prompt-text{
+    margin:0; padding:24px 26px; font-family:'SFMono-Regular',Consolas,'Courier New',monospace;
+    font-size:12.5px; line-height:1.85; white-space:pre-wrap; word-break:break-word;
+    color:#2a3142; max-height:440px; overflow-y:auto; background:#fbfcfe;
+  }
+  .prompt-note{ padding:16px 26px; font-size:12.5px; color:var(--sub); border-top:1px solid var(--line); background:#f7f8fb; }
+
+  /* ===== How to use ===== */
+  .steps{ display:grid; grid-template-columns:1fr; gap:14px; max-width:700px; margin:0 auto; }
+  @media(min-width:640px){ .steps{ grid-template-columns:repeat(3,1fr); } }
+  .step{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px; text-align:center; }
+  .step .n{ width:34px; height:34px; border-radius:50%; background:var(--violet); color:#fff; font-weight:900; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; }
+  .step h4{ font-size:14px; font-weight:800; margin-bottom:5px; }
+  .step p{ font-size:12.5px; color:var(--sub); }
+
+  /* ===== お問い合わせ ===== */
+  .contact{
+    background:linear-gradient(160deg,#14171e,#0c0e13); color:#fff;
+    padding:54px 0; text-align:center; position:relative; overflow:hidden;
+  }
+  .contact::before{
+    content:""; position:absolute; width:360px; height:360px; border-radius:50%;
+    background:radial-gradient(circle,rgba(225,48,108,0.22),transparent 70%);
+    top:-120px; left:50%; transform:translateX(-50%);
+  }
+  .contact-inner{ position:relative; z-index:2; }
+  .contact h2{ font-size:clamp(20px,4vw,26px); font-weight:900; margin-bottom:10px; }
+  .contact p{ font-size:14px; color:#cfd4e0; margin-bottom:26px; max-width:520px; margin-left:auto; margin-right:auto; }
+  .ig-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:linear-gradient(95deg,#f58529,#dd2a7b 45%,#8134af 75%,#515bd4);
+    color:#fff; font-size:16px; font-weight:800; padding:16px 32px; border-radius:14px;
+    box-shadow:0 10px 30px rgba(221,42,123,0.35); transition:transform .15s, box-shadow .15s;
+  }
+  .ig-btn:hover{ transform:translateY(-2px); box-shadow:0 14px 40px rgba(221,42,123,0.45); }
+  .ig-btn:active{ transform:translateY(0); }
+  .ig-icon{ width:24px; height:24px; flex-shrink:0; }
+  .contact .note{ font-size:12px; color:#9da4b3; margin-top:16px; }
+  .contact .note a{ color:#cfd4e0; text-decoration:underline; }
+
+  /* ===== Footer ===== */
+  footer{ background:var(--ink); color:#9da4b3; padding:40px 0 36px; text-align:center; font-size:12.5px; margin-top:0; }
+  /* SNSフォロー */
+  .sns{ display:flex; justify-content:center; gap:16px; margin-bottom:24px; }
+  .sns a, .sns span.soon{
+    width:54px; height:54px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    position:relative; transition:transform .15s, box-shadow .15s; text-decoration:none;
+  }
+  .sns a:hover{ transform:translateY(-3px); }
+  .sns .ig{ background:linear-gradient(95deg,#f58529,#dd2a7b 45%,#8134af 75%,#515bd4); box-shadow:0 6px 18px rgba(221,42,123,0.35); }
+  .sns .x{ background:#000; border:1px solid #2a2f3a; }
+  .sns .soon{ background:#1a1d24; border:1px dashed #3a4150; cursor:default; }
+  .sns svg{ width:26px; height:26px; }
+  .sns .label{
+    position:absolute; bottom:-22px; left:50%; transform:translateX(-50%);
+    font-size:10.5px; color:#9da4b3; white-space:nowrap;
+  }
+  .sns .badge-soon{
+    position:absolute; top:-9px; right:-9px; background:var(--lime); color:var(--ink);
+    font-size:9px; font-weight:800; padding:2px 7px; border-radius:10px; letter-spacing:0.02em;
+  }
+  .sns-head{ font-size:13px; font-weight:700; color:#cfd4e0; margin-bottom:18px; letter-spacing:0.05em; }
+  footer .brand{ color:#fff; font-weight:900; font-size:15px; letter-spacing:0.04em; }
+  footer .lime{ color:var(--lime-bright); }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">LINE 友だち限定 特典</span>
+    <h1>AI実践シリーズ<br><span class="hl">特典</span>ダウンロードページ</h1>
+    <p class="lead">受け取った特典はこちらからいつでも閲覧・ダウンロードできます。ブラウザでそのまま読めるので、スマホでもPCでも、好きなときにどうぞ。</p>
+    <div class="hero-meta">
+      <div class="chip"><b>2</b>つの特典</div>
+      <div class="chip"><b>60</b>ページの本編</div>
+      <div class="chip"><b>無料</b>でずっと使える</div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 特典一覧 ===== -->
+<section class="section" id="gifts">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">YOUR GIFTS</div>
+      <h2>受け取った特典</h2>
+      <p>気になるものから、どうぞ。</p>
+    </div>
+
+    <div class="gift-grid">
+      <!-- 特典1：PDF -->
+      <div class="gift-card">
+        <div class="gift-cover dark">
+          <div class="badge">特典 01</div>
+          <div class="cv-title">
+            <div class="big">3大AI特化<br><span class="lime">プロンプト構成大全</span></div>
+            <div class="sub">全60ページ・完全保存版</div>
+          </div>
+        </div>
+        <div class="gift-body">
+          <div class="gift-tag">電子ブック（PDF）</div>
+          <h3>「たまにうまくいかない」を卒業する一冊</h3>
+          <p class="desc">AIに世界がどう見えているかという根っこから、3大AIの使い分け、日本語と英語の差、NG例、用途別テンプレ80個超まで。読んで終わりにしない、実践のための完全ガイドです。</p>
+          <ul class="gift-features">
+            <li>Gemini・ChatGPT・Claudeの専用テクニック</li>
+            <li>コピペで使えるテンプレート80個超</li>
+            <li>記入式ワークシート付き</li>
+          </ul>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="viewer.html">📖 ブラウザで読む</a>
+            <a class="btn btn-lime" href="prompt-daizen-60p.pdf" download>⬇ ダウンロード</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 特典2：CTRプロンプト -->
+      <div class="gift-card">
+        <div class="gift-cover violet">
+          <div class="badge">特典 02</div>
+          <div class="cv-title">
+            <div class="big">CTR最大化<br><span class="lime">ヘッダー設計</span>プロンプト</div>
+            <div class="sub">SNS・YouTube・LP対応</div>
+          </div>
+        </div>
+        <div class="gift-body">
+          <div class="gift-tag">コピペ用プロンプト</div>
+          <h3>クリックされる画像を、AIに設計させる</h3>
+          <p class="desc">トップ広告クリエイターの思考をプロンプト化。スタイル番号とタイトルを入れるだけで、CTR（クリック率）を最大化するヘッダー画像の設計図と、画像生成AI用の英語プロンプトまで出力します。</p>
+          <ul class="gift-features">
+            <li>10種のデザインスタイルから選ぶだけ</li>
+            <li>視線誘導・配色・テクスチャまで設計</li>
+            <li>そのまま使える画像生成AI用プロンプト付き</li>
+          </ul>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#prompt">📋 プロンプトを見る</a>
+            <button class="btn btn-ghost" onclick="copyPrompt(this)">⎘ コピー</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTRプロンプト全文 ===== -->
+<section class="section" id="prompt" style="background:#eef0f5;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">SPECIAL PROMPT</div>
+      <h2>CTR最大化 ヘッダー設計プロンプト</h2>
+      <p>下のボタンでコピーして、お使いのAI（ChatGPT・Gemini・Claudeなど）に貼り付けてください。</p>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-head">
+        <div>
+          <h3>広告クリエイティブディレクター AI</h3>
+          <p>スタイル番号（1〜10）とタイトルを入力するだけ</p>
+        </div>
+        <button class="copy-btn" id="copyBtnMain" onclick="copyPrompt(this)">⎘ プロンプトをコピー</button>
+      </div>
+      <div class="prompt-body">
+        <pre class="prompt-text" id="promptText">あなたはトップレベルの広告クリエイティブディレクターです。
+SNS・YouTube・note・LP用の「CTR最大化ヘッダー画像」を設計します。
+
+━━━━━━━━━━━━━━━━━━━━
+■ユーザー入力
+・スタイル番号（1〜10）
+・タイトル（メインキーワード）
+
+例：
+3
+副業で月10万円稼ぐ方法
+
+━━━━━━━━━━━━━━━━━━━━
+■スタイル定義（必ず厳守）
+1：ミニマル高級（白・余白・信頼感）
+2：ビジネス信頼（青系・堅実・データ風）
+3：未来テック（黒×ネオン・AI・光）
+4：女性向け柔らか（ピンク・曲線・感情）
+5：教育・解説（図解・情報整理）
+6：SNSバズ（強コントラスト・派手・視線誘導）
+7：高級ブランド（黒×金・ラグジュアリー）
+8：ポップ若者（カラフル・軽快）
+9：AI抽象（グラデーション・抽象）
+10：実写広告（人物・ライフスタイル）
+
+━━━━━━━━━━━━━━━━━━━━
+■必須構造（広告バナー構造）
+必ず3層構造で設計する：
+① メインコピー（最大・視線中心）
+② サブコピー（価値説明）
+③ 補助情報（安心・条件・信頼）
+＋必要に応じて：人物／アイコン／図解／強調装飾
+
+━━━━━━━━━━━━━━━━━━━━
+■柄（テクスチャ）設計ルール（重要）
+必ず背景に「柄・質感・テクスチャ要素」を含めること。
+単色フラット背景は禁止。
+
+【柄カテゴリ（スタイルに応じて必ず選択）】
+1 ミニマル系：薄い紙テクスチャ／微細グラデーション／ソフトシャドウ
+2 ビジネス系：グリッド背景／ブループリントライン／データ風パターン
+3 未来テック系：回路パターン／ホログラム／デジタルノイズ／光粒子
+4 女性向け：花柄ぼかし／柔らかい光の散乱／布・リネン質感
+5 SNSバズ系：放射線パターン／スピードライン／強コントラスト／爆発
+6 高級ブランド系：大理石／黒レザー／金属光沢／マットブラック
+7 ポップ系：ドット柄／ストライプ／手描き風／カラフル模様
+8 実写系：自然光のボケ／室内ライティング／浅い被写界深度
+
+━━━━━━━━━━━━━━━━━━━━
+■制約
+・スタイルは混ぜない
+・タイトルは必ず画像内に大きく表示
+・必ず広告として成立する構図にする
+・CTR（クリック率）を最大化する設計にする
+・柄（テクスチャ）は必須要素とする
+
+━━━━━━━━━━━━━━━━━━━━
+■出力フォーマット
+① コンセプト名
+② レイアウト設計（視線誘導：Z構図・F構図）
+③ 色・光・雰囲気
+④ 柄（テクスチャ）設計
+⑤ 文字デザイン設計
+⑥ CTR改善ポイント
+⑦ 画像生成AI用プロンプト（英語・そのまま使用可能）
+
+━━━━━━━━━━━━━━━━━━━━
+■目的
+・SNS投稿CTR最大化
+・YouTubeサムネ強化
+・LP・販売ページヘッダー最適化</pre>
+      </div>
+      <div class="prompt-note">💡 使い方：コピーしてAIに貼り付け、最後に「スタイル番号」と「タイトル」を2行で送るだけ。⑦で出る英語プロンプトを、画像生成AI（Midjourney・DALL·E・Stable Diffusionなど）にそのまま使えます。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 使い方 ===== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">HOW TO USE</div>
+      <h2>使い方はかんたん</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>特典を選ぶ</h4><p>上の2つから、使いたい特典を選びます。</p></div>
+      <div class="step"><div class="n">2</div><h4>読む or コピー</h4><p>PDFはブラウザで閲覧、プロンプトはコピー。</p></div>
+      <div class="step"><div class="n">3</div><h4>今日から実践</h4><p>知識は使った瞬間にスキルへ変わります。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== お問い合わせ ===== -->
+<section class="contact">
+  <div class="wrap contact-inner">
+    <h2>ご質問・ご相談はこちら</h2>
+    <p>特典の内容や使い方で分からないことがあれば、お気軽にInstagramのDMからご連絡ください。</p>
+    <a class="ig-btn" href="https://ig.me/m/suzukidesu993" target="_blank" rel="noopener">
+      <svg class="ig-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="6" stroke="#fff" stroke-width="2"/>
+        <circle cx="12" cy="12" r="4.5" stroke="#fff" stroke-width="2"/>
+        <circle cx="17.5" cy="6.5" r="1.4" fill="#fff"/>
+      </svg>
+      InstagramのDMで問い合わせる
+    </a>
+    <div class="note">ボタンが開かない場合は <a href="https://www.instagram.com/suzukidesu993/" target="_blank" rel="noopener">@suzukidesu993</a> を検索し、プロフィールの「メッセージ」からどうぞ。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sns-head">SNSもチェック</div>
+    <div class="sns">
+      <a class="ig" href="https://www.instagram.com/suzukidesu993/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="6" stroke="#fff" stroke-width="2"/>
+          <circle cx="12" cy="12" r="4.5" stroke="#fff" stroke-width="2"/>
+          <circle cx="17.5" cy="6.5" r="1.4" fill="#fff"/>
+        </svg>
+        <span class="label">Instagram</span>
+      </a>
+      <span class="soon" aria-label="X（準備中）">
+        <span class="badge-soon">準備中</span>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 4l16 16M20 4L4 20" stroke="#6b7280" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span class="label">X（近日公開）</span>
+      </span>
+    </div>
+    <div class="brand">AI実践<span class="lime">シリーズ</span></div>
+    <p style="margin-top:8px;">このページの特典は、受け取った方への無料プレゼントです。</p>
+  </div>
+</footer>
+
+<script>
+  function copyPrompt(btn){
+    const text = document.getElementById('promptText').innerText;
+    navigator.clipboard.writeText(text).then(()=>{
+      const main = document.getElementById('copyBtnMain');
+      if(main){ const o=main.innerText; main.innerText='✓ コピーしました'; main.classList.add('done'); setTimeout(()=>{main.innerText=o; main.classList.remove('done');},1800); }
+      if(btn && btn!==main){ const o2=btn.innerText; btn.innerText='✓ コピー済み'; setTimeout(()=>{btn.innerText=o2;},1800); }
+      if(btn===main){} else { window.location.hash='prompt'; }
+    }).catch(()=>{ alert('コピーに失敗しました。プロンプト本文を手動で選択してコピーしてください。'); });
+  }
+</script>
+</body>
+</html>
